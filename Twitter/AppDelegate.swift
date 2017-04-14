@@ -61,26 +61,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             
                                             twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
 //                                                print("account: \(response)")
+                                                let userDictionary = response as! NSDictionary
+//                                                print("user: \(user)")
+                                                let user = User(dictionary: userDictionary)
                                                 
-                                                let user = response as! NSDictionary
-                                                print("name: \(user["name"]!)")
-                                                
+                                                print("name: \(user.name!)")
+                                                print("screen_name: \(user.screenName!)")
+                                                print("profile_image_url_https: \(user.profileUrl!)")
+                                                print("description: \(user.userDescription!)")
+
+
                                             }, failure: { (task: URLSessionDataTask?, error: Error) in
                                                 print("error: \(error.localizedDescription)")
                                             })
                                             
                                             twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                                                let tweets = response as! [NSDictionary]
-                                                for tweet in tweets
-                                                {
-                                                    print("\(tweet["text"]!)")
-
-                                                }
+//                                                let tweets = response as! [NSDictionary]
+                                                let dictionaries = response as! [NSDictionary]
+                                                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
                                                 
+                                                for tweet in tweets {
+                                                    print("\(tweet.text!)")
+                                                }
                                             }, failure: { (task: URLSessionDataTask?, error: Error) in
                                                 print("error: \(error.localizedDescription)")
                                             })
-                                            
                                             
         }) { (error: Error!) -> Void in
             print("error: \(error.localizedDescription)")
