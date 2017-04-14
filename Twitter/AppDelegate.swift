@@ -42,55 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url.description)
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        
-        
-        let url: URL = URL(string: "https://api.twitter.com")!
-        let consumerKey: String = "Y0SJql28CbzeoOneVmx530Iqn"
-        let consumerSecret: String = "prv3Xd6fJiRHLNq3xFDpCSkJjFJ2Amqg7h5qzvfsTAR8SqYMa9"
-        
-        let twitterClient = BDBOAuth1SessionManager(baseURL: url as URL!, consumerKey: consumerKey, consumerSecret: consumerSecret)
-        
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token",
-                                        method: "POST",
-                                        requestToken: requestToken,
-                                        success: { (accessToken: BDBOAuth1Credential!) -> Void in
-                                            print("I've got the Access Token")
-                                            
-                                            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-//                                                print("account: \(response)")
-                                                let userDictionary = response as! NSDictionary
-//                                                print("user: \(user)")
-                                                let user = User(dictionary: userDictionary)
-                                                
-                                                print("name: \(user.name!)")
-                                                print("screen_name: \(user.screenName!)")
-                                                print("profile_image_url_https: \(user.profileUrl!)")
-                                                print("description: \(user.userDescription!)")
-
-
-                                            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                                                print("error: \(error.localizedDescription)")
-                                            })
-                                            
-                                            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-//                                                let tweets = response as! [NSDictionary]
-                                                let dictionaries = response as! [NSDictionary]
-                                                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
-                                                
-                                                for tweet in tweets {
-                                                    print("\(tweet.text!)")
-                                                }
-                                            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                                                print("error: \(error.localizedDescription)")
-                                            })
-                                            
-        }) { (error: Error!) -> Void in
-            print("error: \(error.localizedDescription)")
-        }
-        
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {        
+        TwitterClient.sharedInstance?.handleOpenUrl(url: url)
         return true
     }
     
