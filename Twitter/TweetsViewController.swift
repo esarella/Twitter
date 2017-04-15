@@ -8,28 +8,45 @@
 
 import UIKit
 
-//class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    class TweetsViewController: UIViewController {
-
-
-    var tweets: [Tweet]!
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
+    var tweets: [Tweet]! = []
+    
+    @IBAction func onLogoutButton(_ sender: Any) {
+        TwitterClient.sharedInstance?.logout()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.
+        tableView.delegate = self
+        tableView.dataSource = self
         
+//        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
+//            self.tweets = tweets
+//            
+//            for tweet in tweets {
+//                print(tweet.text!)
+//            }
+//        }, failure: { (error: Error) in
+//            print(error.localizedDescription)
+//        })
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
             
             for tweet in tweets {
                 print(tweet.text!)
             }
+            self.tableView.reloadData()
         }, failure: { (error: Error) in
             print(error.localizedDescription)
         })
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +55,19 @@ import UIKit
     }
     
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
+    
+        cell.tweetTextView.text = tweets[indexPath.row].text
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tweets.count 
+    }
+    
+    
     /*
     // MARK: - Navigation
 
