@@ -17,23 +17,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.sharedInstance?.logout()
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-//        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-//            self.tweets = tweets
-//            
-//            for tweet in tweets {
-//                print(tweet.text!)
-//            }
-//        }, failure: { (error: Error) in
-//            print(error.localizedDescription)
-//        })
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +44,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - TableView Methods
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
@@ -64,9 +55,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("fetchedTweets: \(self.tweets.count)")
         return self.tweets.count 
     }
-    
     
     /*
     // MARK: - Navigation

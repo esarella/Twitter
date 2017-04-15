@@ -18,7 +18,6 @@ class User: NSObject {
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
-        
         self.dictionary = dictionary
         
         name = dictionary["name"] as? String
@@ -28,9 +27,7 @@ class User: NSObject {
         if let profileUrlString = profileUrlString {
             profileUrl = URL(string: profileUrlString)
         }
-        
         userDescription = dictionary["description"] as? String
-        
     }
     
     static let userDidLogoutNotification = "UserDidLogout"
@@ -66,7 +63,4 @@ class User: NSObject {
             defaults.synchronize()
         }
     }
-    
-    
-    
 }

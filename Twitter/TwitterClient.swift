@@ -13,7 +13,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     static let url: URL = URL(string: "https://api.twitter.com")!
     static let consumerKey: String = "Xta54Mr1zYTycOZuDSaGNtbUl"
-    static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"    
+    static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"
     
     static let sharedInstance = TwitterClient(baseURL: url as URL!, consumerKey: consumerKey, consumerSecret: consumerSecret)
     
@@ -39,7 +39,6 @@ class TwitterClient: BDBOAuth1SessionManager {
             print("error: \(error.localizedDescription)")
             self.loginFailure!(error)
         }
-        
     }
     
     func logout() {
@@ -56,7 +55,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                          method: "POST",
                          requestToken: requestToken,
                          success: { (accessToken: BDBOAuth1Credential!) in
-
+                            
                             self.currentAccount(success: { (user: User) in
                                 User.currentUser = user
                                 self.loginSucess?()
@@ -85,22 +84,15 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
-            //                                                print("account: \(response)")
+            //print("account: \(response)")
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
             
             success(user)
             
-//            print("name: \(user.name!)")
-//            print("screen_name: \(user.screenName!)")
-//            print("profile_image_url_https: \(user.profileUrl!)")
-//            print("description: \(user.userDescription!)")
-            
-            
         }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
             print("error: \(error.localizedDescription)")
             failure(error)
         })
-        
     }
 }
