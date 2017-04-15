@@ -14,7 +14,6 @@ class User: NSObject {
     var screenName: String?
     var profileUrl: URL?
     var userDescription: String?
-    
     var dictionary: NSDictionary
     
     init(dictionary: NSDictionary) {
