@@ -29,8 +29,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         configureRowHeight()
         addRefreshControl()
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,14 +89,19 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "DetailViewSegue" {
+            let indexPath = tableView.indexPath(for: sender as! TweetTableViewCell)
+            let destinationVC = segue.destination as! TweetDetailViewController
+            if let indexPath = indexPath {
+                let tweet = tweets[indexPath.row]
+                destinationVC.tweet = tweet
+            }
+        }
     }
-    */
+    
 
 }

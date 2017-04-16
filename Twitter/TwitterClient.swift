@@ -12,8 +12,11 @@ import BDBOAuth1Manager
 class TwitterClient: BDBOAuth1SessionManager {
     
     static let url: URL = URL(string: "https://api.twitter.com")!
-    static let consumerKey: String = "Xta54Mr1zYTycOZuDSaGNtbUl"
-    static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"
+    //static let consumerKey: String = "Xta54Mr1zYTycOZuDSaGNtbUl"
+    //static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"
+    
+    static let consumerKey: String = "Y0SJql28CbzeoOneVmx530Iqn"
+    static let consumerSecret: String = "prv3Xd6fJiRHLNq3xFDpCSkJjFJ2Amqg7h5qzvfsTAR8SqYMa9"
     
     static let sharedInstance = TwitterClient(baseURL: url as URL!, consumerKey: consumerKey, consumerSecret: consumerSecret)
     
