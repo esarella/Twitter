@@ -8,5 +8,8 @@ target 'Twitter' do
   # Pods for Twitter
   pod 'AFNetworking'
   pod 'BDBOAuth1Manager'
-
+  pod 'SVPullToRefresh'
+  pod 'RKDropdownAlert'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  
 end

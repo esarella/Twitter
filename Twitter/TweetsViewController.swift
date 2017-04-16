@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SVPullToRefresh
+import RKDropdownAlert
+import ChameleonFramework
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,6 +27,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
+        configureRowHeight()
+        addRefreshControl()
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,17 +46,37 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func configureRowHeight() {
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
+    
+    fileprivate func addRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    @objc fileprivate func refreshControlAction(refreshControl: UIRefreshControl) {
+        fetchTweets(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+        }, failure: { (error: Error) in
+            RKDropdownAlert.title("Failed to Refresh Data", message: error.localizedDescription, backgroundColor: FlatBlack() , textColor: FlatWhite(), time: 1)
+            refreshControl.endRefreshing()
+        })
+    }
+
+    fileprivate func fetchTweets(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance?.homeTimeline(success: success, failure: failure)
+    }
+
     
     // MARK: - TableView Methods
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
-    
-//        cell.tweetTextView.text = tweets[indexPath.row].text
         cell.tweet = tweets[indexPath.row]
         
         return cell
@@ -58,6 +85,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("fetchedTweets: \(self.tweets.count)")
         return self.tweets.count 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /*
