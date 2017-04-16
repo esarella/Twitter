@@ -309,6 +309,7 @@
                                                     <state key="highlighted" image="Twitter Reply Action Pressed"/>
                                                     <connections>
                                                         <action selector="onReplyButtonTap:" destination="cly-cT-CGb" eventType="touchUpInside" id="BLc-dC-3jz"/>
+                                                        <action selector="replyButtonTapped:" destination="cly-cT-CGb" eventType="touchUpInside" id="dP2-ce-kNY"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqk-4D-rAu" userLabel="Retweet Button">
@@ -321,6 +322,7 @@
                                                     <state key="highlighted" image="Twitter Retweet Action Pressed"/>
                                                     <connections>
                                                         <action selector="onRetweetButtonTap:" destination="cly-cT-CGb" eventType="touchUpInside" id="PZF-zT-sdh"/>
+                                                        <action selector="retweetButtonTapped:" destination="cly-cT-CGb" eventType="touchUpInside" id="9ck-5U-Jxk"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVV-9J-6Js" userLabel="Favorite Button">
@@ -332,6 +334,7 @@
                                                     <state key="normal" image="Like_Action"/>
                                                     <state key="highlighted" image="Twitter Like Action Pressed"/>
                                                     <connections>
+                                                        <action selector="favoriteButtonTapped:" destination="cly-cT-CGb" eventType="touchUpInside" id="CvV-yO-Pqo"/>
                                                         <action selector="onFavoriteButtonTap:" destination="cly-cT-CGb" eventType="touchUpInside" id="gJR-lf-Rbr"/>
                                                     </connections>
                                                 </button>

@@ -9,9 +9,9 @@
 import UIKit
 
 protocol TweetControlsCellDelegate: class {
-    func tweetControlsCell(_ tweetButtonsCell: TweetControlsCell, didFavorited value: Bool)
-    func tweetControlsCell(_ tweetButtonsCell: TweetControlsCell, didRetweeted value: Bool)
-    func tweetControlsCell(_ tweetButtonsCell: TweetControlsCell, replyTo tweet: Tweet)
+    func tweetControlsCell(_ tweetControlsCell: TweetControlsCell, didFavorited value: Bool)
+    func tweetControlsCell(_ tweetControlsCell: TweetControlsCell, didRetweeted value: Bool)
+    func tweetControlsCell(_ tweetControlsCell: TweetControlsCell, replyTo tweet: Tweet)
 }
 
 class TweetControlsCell: UITableViewCell {
@@ -46,6 +46,37 @@ class TweetControlsCell: UITableViewCell {
                 retweetButton.setImage(UIImage(named: "Twitter Retweet Action Pressed"), for: .highlighted)
             }
         }
+    }
+    
+    @IBAction func replyButtonTapped(_ sender: Any) {
+        delegate?.tweetControlsCell(self, replyTo: tweet)
+    }
+    
+    @IBAction func retweetButtonTapped(_ sender: Any) {
+        if !retweetStatus {
+            retweetStatus = !retweetStatus
+            retweetButton.setImage(UIImage(named: "Twitter Retweet Action On"), for: .normal)
+            retweetButton.setImage(UIImage(named: "Twitter Retweet Action On Pressed"), for: .highlighted)
+        } else {
+            retweetStatus = !retweetStatus
+            retweetButton.setImage(UIImage(named: "Twitter Retweet Action"), for: .normal)
+            retweetButton.setImage(UIImage(named: "Twitter Retweet Action Pressed"), for: .highlighted)
+        }
+        delegate?.tweetControlsCell(self, didRetweeted: retweetStatus)
+
+    }
+
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        if !favoritedStatus {
+            favoritedStatus = !favoritedStatus
+            favoriteButton.setImage(UIImage(named: "Twitter Like Action On"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "Twitter Like Action On Pressed"), for: .highlighted)
+        } else {
+            favoritedStatus = !favoritedStatus
+            favoriteButton.setImage(UIImage(named: "Twitter Like Action"), for: .normal)
+            favoriteButton.setImage(UIImage(named: "Twitter Like Action Pressed"), for: .highlighted)
+        }
+        delegate?.tweetControlsCell(self, didFavorited: favoritedStatus)
     }
 
 }

@@ -19,14 +19,10 @@ class TweetStatusCell: UITableViewCell {
         didSet {
             if let retweetData = tweet.retweetData {
                 retweetsCountLabel.text = retweetData.retweetCount == 0 ? "0" : "\(retweetData.retweetCount)"
-                retweetsCountLabel.text = retweetData.favoriteCount == 0 ? "0" :"\(retweetData.favoriteCount)"
-                //retweetsLabel.isHidden = retweetData.retweetCount == 0
-                //likesLabel.isHidden = retweetData.favoritesCount == 0
+                likesCountLabel.text = retweetData.favoriteCount == 0 ? "0" :"\(retweetData.favoriteCount)"
             } else {
                 retweetsCountLabel.text = tweet.retweetCount == 0 ? "0" : "\(tweet.retweetCount)"
                 likesCountLabel.text = tweet.favoriteCount == 0 ? "0" :"\(tweet.favoriteCount)"
-                //retweetsLabel.isHidden = tweet.retweetCount == 0
-                //likesLabel.isHidden = tweet.favoritesCount == 0
             }
         }
     }
