@@ -21,9 +21,10 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         tweetDetail.dataSource = self
         tweetDetail.delegate = self
-        //        tweetDetail.reloadData()
         
-        // Do any additional setup after loading the view.
+        tweetDetail.estimatedRowHeight = 500
+        tweetDetail.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     override func didReceiveMemoryWarning() {
