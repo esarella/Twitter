@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **10** hours spent in total
+Time spent: **22** hours spent in total
 
 ## User Stories
 
@@ -34,8 +34,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Debugging in closures is very Hard. Had to chnage my programming style to not use closures to fix my bugs.
+2. LayoutConstraints were tricky and spent a lot of my time fixing them
 
 ## Video Walkthrough
 
