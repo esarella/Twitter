@@ -10,12 +10,12 @@ struct StaticText {
     static let twitterBaseURL: String = "https://api.twitter.com/"
     static let callbackURL: String = "twitterdemosarella://oauth"
 
-    static let consumerKey: String = "Xta54Mr1zYTycOZuDSaGNtbUl"
-    static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"
+//    static let consumerKey: String = "Xta54Mr1zYTycOZuDSaGNtbUl"
+//    static let consumerSecret: String = "xphVOZZq3PPWlH7wHyt0YPcZ3CjA9nOfGVJE5aw8yR0LYEwORb"
 
     //Alternate keys to overcome twitter API Limits
-//    static let consumerKey = "Y0SJql28CbzeoOneVmx530Iqn"
-//    static let consumerSecret = "prv3Xd6fJiRHLNq3xFDpCSkJjFJ2Amqg7h5qzvfsTAR8SqYMa9"
+    static let consumerKey = "Y0SJql28CbzeoOneVmx530Iqn"
+    static let consumerSecret = "prv3Xd6fJiRHLNq3xFDpCSkJjFJ2Amqg7h5qzvfsTAR8SqYMa9"
 
     static let requestTokenUrl: String = "oauth/request_token"
     static let accessTokenUrl: String = "oauth/access_token"

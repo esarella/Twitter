@@ -2,45 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0459be7a-0e9e-4863-b7ed-3811aaa02b46" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Like_Action.imageset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Like_Action.imageset/like-action.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Reply_Action.imageset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Reply_Action.imageset/reply-action_0.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Retweet_Action.imageset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Retweet_Action.imageset/retweet-action.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Twitter_Logo_White_On_Blue.imageset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Twitter_Logo_White_On_Blue.imageset/Twitter_Logo_White_On_Blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/TweetControlsCell.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/TweetDetailViewController.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/TweetDetailsTableViewCell.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/TweetStatusCell.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Twitter/TweetTableViewCell.swift" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/Pods-Twitter.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/Pods-Twitter.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/RKDropdownAlert.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/RKDropdownAlert.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/SVPullToRefresh.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/SVPullToRefresh.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-acknowledgements.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-frameworks.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter-frameworks.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Twitter.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/Twitter.xcscheme" afterPath="$PROJECT_DIR$/Twitter.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/Twitter.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Twitter.xcodeproj/xcuserdata/sarella_e.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter.xcworkspace/xcuserdata/sarella_e.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/Twitter.xcworkspace/xcuserdata/sarella_e.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/AppDelegate.swift" afterPath="$PROJECT_DIR$/Twitter/AppDelegate.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/Assets.xcassets/Contents.json" afterPath="$PROJECT_DIR$/Twitter/Assets.xcassets/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/Twitter/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/Info.plist" afterPath="$PROJECT_DIR$/Twitter/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/LoginViewController.swift" afterPath="$PROJECT_DIR$/Twitter/LoginViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/Tweet.swift" afterPath="$PROJECT_DIR$/Twitter/Tweet.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/TweetsViewController.swift" afterPath="$PROJECT_DIR$/Twitter/TweetsViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/TwitterClient.swift" afterPath="$PROJECT_DIR$/Twitter/TwitterClient.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/User.swift" afterPath="$PROJECT_DIR$/Twitter/User.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Readme.md" afterPath="$PROJECT_DIR$/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Twitter/StaticText.swift" afterPath="$PROJECT_DIR$/Twitter/StaticText.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +17,29 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Readme.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Readme.md" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -85,6 +70,16 @@
       <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Twitter" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" />
@@ -128,12 +123,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1492410132129</updated>
-      <workItem from="1492410133448" duration="49000" />
+      <workItem from="1492410133448" duration="823000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49000" />
+    <option name="totallyTimeSpent" value="823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1053" extended-state="6" />
@@ -169,5 +164,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
