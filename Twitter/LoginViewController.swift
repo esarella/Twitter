@@ -2,46 +2,36 @@
 //  LoginViewController.swift
 //  Twitter
 //
-//  Created by Emmanuel Sarella on 4/13/17.
+//  Created by Emmanuel Sarella on 4/16/17.
 //  Copyright © 2017 Emmanuel Sarella. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import BDBOAuth1Manager
+import RKDropdownAlert
+
+
+import UIKit
+import BDBOAuth1Manager
+import RKDropdownAlert
 
 class LoginViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func onLoginTapped(_ sender: Any) {
-    TwitterClient.sharedInstance?.login(success: {
-             // do something
-            print("I've Logged in !")
+    var currentUser: User!
+
+    @IBAction func onLoginButton(_ sender: UIButton) {
+        TwitterClient.sharedInstance.login(success: { (user: User) in
+            self.currentUser = user
+            debugPrint("current user in LoginViewController is \(self.currentUser)")
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            
-        }, failure: { (error: Error) in
-            print("Error: \(error.localizedDescription)")
-        })
-        
+        }) { (error: Error) in
+//            RKDropdownAlert.title("Error: \(error.localizedDescription)", message: "Please Try Again Later", backgroundColor: TwitterClient.Colors.failureBackgroundColor, textColor: TwitterClient.Colors.failureTextColor, time: 1)
+        }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationNavVC = segue.destination as! UINavigationController
+        let destinationVC = destinationNavVC.topViewController as! TweetsViewController
+        destinationVC.currentUser = currentUser
+    }
 }

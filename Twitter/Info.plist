@@ -25,7 +25,7 @@
 			<string>com.sarella.Twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterdemo</string>
+				<string>twitterdemosarella</string>
 			</array>
 		</dict>
 	</array>
@@ -46,7 +46,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

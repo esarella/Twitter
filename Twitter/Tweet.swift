@@ -2,75 +2,116 @@
 //  Tweet.swift
 //  Twitter
 //
-//  Created by Emmanuel Sarella on 4/13/17.
+//  Created by Emmanuel Sarella on 4/16/17.
 //  Copyright © 2017 Emmanuel Sarella. All rights reserved.
 //
 
 import UIKit
 
 class Tweet: NSObject {
-    
+    var user: User?
     var text: String?
-    var timeStamp: Date?
+    var timestamp: Date?
     var timestampString: String?
     var timestampLongString: String?
+
+    var IDString: String?
     var retweetCount: Int = 0
-    var favoriteCount: Int = 0
-    var user: User?
-    var retweetData: Tweet?
+    var favoritesCount: Int = 0
     var retweeted: Bool = false
     var favorited: Bool = false
+    var truncated: Bool = false
+    var inReplyToStatusIDStr: String?
+    var retweetData: Tweet?
+    var entities: Entities?
 
-    
-    var formattedDate: String {
-        if let timeStamp = timeStamp {
+    var displayRelativeDate: String {
+        if let timestamp = timestamp {
             let dateComponentsFormatter = DateComponentsFormatter()
-            dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
+            dateComponentsFormatter.allowedUnits = [.year, .month, .weekOfYear, .day, .hour, .minute, .second]
             dateComponentsFormatter.maximumUnitCount = 1
             dateComponentsFormatter.unitsStyle = .abbreviated
-            return dateComponentsFormatter.string(from: timeStamp, to: Date()) ?? ""
+            return dateComponentsFormatter.string(from: timestamp, to: Date()) ?? ""
         }
         return ""
     }
 
-    
     init(dictionary: NSDictionary) {
-        user = User(dictionary: dictionary["user"] as! NSDictionary)
-        text = dictionary["text"] as? String
-        
-        let timeStampString = dictionary["created_at"] as? String
-        if let timeStampString = timeStampString {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            timeStamp = formatter.date(from: timeStampString)
-            
-            formatter.dateStyle = .short
-            formatter.timeStyle = .none
-            timestampString = timeStamp == nil ? "" : formatter.string(from: timeStamp!)
-            
-            formatter.dateStyle = .short
-            formatter.timeStyle = .short
-            timestampLongString = timeStamp == nil ? "" : formatter.string(from: timeStamp!)
+        user = User(dictionary: dictionary[TweetParams.user] as! NSDictionary)
+        text = dictionary[TweetParams.text] as? String
+
+        if let timestampStr = dictionary[TweetParams.timestamp] as? String {
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = NSLocale.current
+            dateFormatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+            timestamp = dateFormatter.date(from: timestampStr)
+
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .none
+            timestampString = timestamp == nil ? "" : dateFormatter.string(from: timestamp!)
+
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            timestampLongString = timestamp == nil ? "" : dateFormatter.string(from: timestamp!)
         }
-        
-        retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        favoriteCount = (dictionary["favourites_count"] as? Int) ?? 0
-        retweeted = (dictionary["retweeted"] as? Bool) ?? false
-        favorited = (dictionary["favorited"] as? Bool) ?? false
-        
-        if let retweetedStatus = dictionary["retweeted_status"] as? NSDictionary {
+
+        IDString = dictionary[TweetParams.tweetIDString] as? String
+        retweetCount = (dictionary[TweetParams.retweetCount] as? Int) ?? 0
+        favoritesCount = (dictionary[TweetParams.favoritesCount] as? Int) ?? 0
+        retweeted = (dictionary[TweetParams.retweeted] as? Bool) ?? false
+        favorited = (dictionary[TweetParams.favorited] as? Bool) ?? false
+        truncated = (dictionary[TweetParams.truncated] as? Bool) ?? false
+
+        inReplyToStatusIDStr = dictionary[TweetParams.inReplyToStatusID] as? String
+
+        if let retweetedStatus = dictionary[TweetParams.retweetedStatus] as? NSDictionary {
             retweetData = Tweet(dictionary: retweetedStatus)
         }
-    }
-    
-    class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
-        var tweets: [Tweet] = [Tweet]()
-        
-        for dictionary in dictionaries {
-            let tweet = Tweet(dictionary: dictionary)
-            tweets.append(tweet)
+
+        if let entitiesDictionary = dictionary[TweetParams.entities] as? NSDictionary {
+            entities = Entities(dictionary: entitiesDictionary)
         }
-        
+    }
+
+    init(text: String, user: User, timestamp: Date) {
+        self.user = user
+        self.text = text
+        self.timestamp = timestamp
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        timestampString = dateFormatter.string(from: timestamp)
+    }
+
+    func didFavorited(success: @escaping (NSDictionary, URLResponse?) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance.postFavorite(ID: IDString!, success: success, failure: failure)
+    }
+
+    func didUnfavorited(success: @escaping (NSDictionary, URLResponse?) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance.postUnfavorite(ID: IDString!, success: success, failure: failure)
+    }
+
+    func didRetweeted(success: @escaping (Tweet, URLResponse?) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance.postRetweet(ID: IDString!, success: success, failure: failure)
+    }
+
+    func didUnretweeted(ID: String, success: @escaping (Tweet, URLResponse?) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance.postUnretweet(ID: ID, success: success, failure: failure)
+    }
+
+    func getTweetInfo(success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance.getTweetInfo(ID: IDString!, success: success, failure: failure)
+    }
+
+    class func tweetsWithArray(_ dictionaries: [NSDictionary]) -> [Tweet] {
+        var tweets = [Tweet]()
+
+        for dictionary in dictionaries {
+            tweets.append(Tweet(dictionary: dictionary))
+        }
+
         return tweets
     }
 }

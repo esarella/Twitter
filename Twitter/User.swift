@@ -2,64 +2,67 @@
 //  User.swift
 //  Twitter
 //
-//  Created by Emmanuel Sarella on 4/13/17.
+//  Created by Emmanuel Sarella on 4/16/17.
 //  Copyright © 2017 Emmanuel Sarella. All rights reserved.
 //
 
 import UIKit
 
 class User: NSObject {
-    
-    var name : String?
+
+    // MARK: - Properties
+
+    var name: String?
     var screenName: String?
-    var profileUrl: URL?
-    var userDescription: String?
-    var dictionary: NSDictionary
-    
-    init(dictionary: NSDictionary) {
-        self.dictionary = dictionary
-        
-        name = dictionary["name"] as? String
-        screenName = dictionary["screen_name"] as? String
-        
-        let profileUrlString = dictionary["profile_image_url_https"] as? String
-        if let profileUrlString = profileUrlString {
-            profileUrl = URL(string: profileUrlString)
-        }
-        userDescription = dictionary["description"] as? String
-    }
-    
-    static let userDidLogoutNotification = "UserDidLogout"
-    static var _currentUser: User?
-    
+    var profileImageURLString: String?
+    var profileOriginalImageURLString: String?
+    var profileImageURL: URL?
+    var tagline: String?
+    var dictionary: NSDictionary?
+
+    static let userDidLogout = "UserDidLogout"
+    fileprivate static let defaults = UserDefaults.standard
+    fileprivate static let currentUserData = "currentUserData"
+    fileprivate static var _currentUser: User?
+
     class var currentUser: User? {
         get {
             if _currentUser == nil {
-                let defaults = UserDefaults.standard
-                let userData = defaults.object(forKey: "currentUserData") as? Data
-                
+                let userData = defaults.object(forKey: currentUserData) as? Data
+
                 if let userData = userData {
                     let dictionary = try! JSONSerialization.jsonObject(with: userData, options: []) as! NSDictionary
-                    
                     _currentUser = User(dictionary: dictionary)
                 }
             }
             return _currentUser
         }
-        
         set(user) {
             _currentUser = user
-            let defaults = UserDefaults.standard
-            
+
             if let user = user {
-                let data = try! JSONSerialization.data(withJSONObject: user.dictionary, options: [])
-                defaults.set(data, forKey: "currentUserData")
-                
-            }
-            else {
-                defaults.removeObject(forKey: "currentUserData")
+                let userData = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
+                defaults.set(userData, forKey: currentUserData)
+            } else {
+                defaults.removeObject(forKey: currentUserData)
             }
             defaults.synchronize()
         }
     }
+
+    init(dictionary: NSDictionary) {
+        self.dictionary = dictionary
+
+        name = dictionary[TweetParams.name] as? String
+        screenName = dictionary[TweetParams.screenName] as? String
+
+        if let profileURLString = dictionary[TweetParams.profileImageURL] as? String {
+            self.profileImageURLString = profileURLString
+            profileOriginalImageURLString = profileImageURLString?.replacingOccurrences(of: "_normal", with: "")
+            profileImageURL = profileOriginalImageURLString != nil ? URL(string: profileOriginalImageURLString!) : URL(string: profileURLString)
+        }
+
+        tagline = dictionary[TweetParams.tagline] as? String
+    }
 }
+

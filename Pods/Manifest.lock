@@ -20,6 +20,7 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - RKDropdownAlert (0.3.0)
+  - SVProgressHUD (2.1.2)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - BDBOAuth1Manager
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - RKDropdownAlert
+  - SVProgressHUD
   - SVPullToRefresh
 
 EXTERNAL SOURCES:
@@ -43,8 +45,9 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   RKDropdownAlert: f4b3364c251829ad439dc666836a1f2dad26f4c7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 496832abb97109ee97c9c5f6ca07321a05af7255
+PODFILE CHECKSUM: 5eec4b4651e6d010fbecd09294c9c0fb887d312e
 
 COCOAPODS: 1.2.0
