@@ -43,10 +43,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/QgeLNma.gif' title='Twitter Walkthrough' width='' alt='Twitter Walkthrough' />
 <img src='http://i.imgur.com/9ssxdKg.gif' title='Feed Refresh' width='' alt='Feed Refresh' />
+<img src='http://i.imgur.com/RwfErW4.gif' title='Live Refresh' width='' alt='Live Refresh' />
 <img src='http://i.imgur.com/jsppSJo.gif' title='Retweets' width='' alt='Retweets />
 <img src='http://i.imgur.com/DztfBHg.gif' title='Errors messaging' width='' alt='Errors messaging' />
 <img src='http://i.imgur.com/5BMCTyt.gif' title='Sign out and Signin' width='' alt='Sign out and Signin' />
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Live Refresh' width='' alt='Live Refresh' />
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
